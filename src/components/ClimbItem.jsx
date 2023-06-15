@@ -12,7 +12,7 @@ const ClimbItem = (props) => {
       <Pressable
         style={styles.navigationButton}
         onPress={() =>
-          props.navigate("Climb Regard", {
+          props.navigate("Climb Session", {
             id: props.id,
           })
         }

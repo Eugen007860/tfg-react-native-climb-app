@@ -8,8 +8,6 @@ import SignIn from "./src/pages/SignIn";
 import ClimbDataPage from "./src/pages/ClimbDataPage";
 const Stack = createNativeStackNavigator();
 
-
-
 export default function App() {
   return (
     <NavigationContainer>
@@ -17,7 +15,11 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Log in" component={LogIn} />
         <Stack.Screen name="Sign in" component={SignIn} />
-        <Stack.Screen name="Climb Regard" component={ClimbDataPage} />
+        <Stack.Screen
+          name="Climb Session"
+          component={ClimbDataPage}
+          options={({ route }) => ({ title: route.params.name })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

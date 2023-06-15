@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, FlatList, Image, Button } from "react-native";
-import mockedData from "../data/mockedData";
+import mockedData from "../data/ClimbItemData";
 import ClimbItem from "../components/ClimbItem";
 
 export default function Home({navigation}) {
