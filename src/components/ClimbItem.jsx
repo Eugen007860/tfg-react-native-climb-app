@@ -2,23 +2,28 @@ import React from "react";
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 
 const ClimbItem = (props) => {
+  const date = props.date.slice(0, 10);
+  const hour = props.date.slice(14, 19);
   return (
-    <View style={styles.container} key={props.id}>
-      <Text style={styles.header}> {props.date}</Text>
+    <View style={styles.container} key={props.climb_item_id}>
+      <Text style={styles.header}> {date} </Text>
       <View style={styles.content}>
         <Image source={{ uri: props.placeImage }} style={styles.image} />
         <Text>{props.description}</Text>
       </View>
-      <Pressable
-        style={styles.navigationButton}
-        onPress={() =>
-          props.navigate("Climb Session", {
-            id: props.id,
-          })
-        }
-      >
-        <Text>Ver mas</Text>
-      </Pressable>
+      <View style={styles.footer}>
+        <Pressable
+          style={styles.navigationButton}
+          onPress={() =>
+            props.navigate("Climb Session", {
+              id: props.climb_item_id,
+            })
+          }
+        >
+          <Text>Ver mas</Text>
+        </Pressable>
+        <Text style={[styles.hour]}> {hour}</Text>
+      </View>
     </View>
   );
 };
@@ -38,6 +43,17 @@ const styles = StyleSheet.create({
 
   content: {
     flexDirection: "row",
+  },
+
+  footer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  hour: {
+    fontWeight: "bold",
+    alignSelf: "center",
+    marginRight: 5
   },
 
   navigationButton: {
