@@ -5,7 +5,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./src/pages/Home";
 import LogIn from "./src/pages/LogIn";
 import SignIn from "./src/pages/SignIn";
-import ClimbDataPage from "./src/pages/ClimbDataPage";
+import ClimbingDataPage from "./src/pages/ClimbingDataPage";
+import ClimbingItemCreator from "./src/pages/ClimbingItemCreator";
+import ClimbingSessionCreator from "./src/pages/ClimbigSessionCreator";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -15,9 +17,11 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Log in" component={LogIn} />
         <Stack.Screen name="Sign in" component={SignIn} />
+        <Stack.Screen name="Crear Registro escalada" component={ClimbingItemCreator}/>
+        <Stack.Screen name="Registrar datos escalada" component={ClimbingSessionCreator}/>
         <Stack.Screen
           name="Climb Session"
-          component={ClimbDataPage}
+          component={ClimbingDataPage}
           options={({ route }) => ({ title: route.params.name })}
         />
       </Stack.Navigator>

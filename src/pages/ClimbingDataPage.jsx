@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import StrengthItem from "../components/StrengthItem";
 import EnvDataContainer from "../components/EnvDataContainer";
 
@@ -9,7 +9,7 @@ export default function ClimbDataPage({ navigation, route }) {
 
   const fetchClimbSession = async () => {
     const data = await fetch(
-      `http://192.168.0.29:3000/climbSessions?item_id=${id}`
+      `http://192.168.0.29:3000/climbingSession?item_id=${id}`
     );
     const json = await data.json();
     setClimbSessionData(json[0]);
@@ -18,7 +18,7 @@ export default function ClimbDataPage({ navigation, route }) {
   useEffect(() => {
     fetchClimbSession();
     navigation.setOptions({ title: `Climb Session id: ${id}` });
-  }, []);
+  }, [route.params]);
 
   return (
     <View>
@@ -37,6 +37,19 @@ export default function ClimbDataPage({ navigation, route }) {
             Fuerza maxima <Text style={{ fontWeight: "bold" }}>Anular</Text>:
           </StrengthItem>
           <EnvDataContainer id={id} />
+        </View>
+      )}
+
+      {!climbSessionData && (
+        <View>
+          <Text> Todavia no tienes un registro para este dia !</Text>
+          <Pressable
+            onPress={() =>
+              navigation.navigate("Registrar datos escalada", { id: id })
+            }
+          >
+            <Text>Registrar datos</Text>
+          </Pressable>
         </View>
       )}
     </View>

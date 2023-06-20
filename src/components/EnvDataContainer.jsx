@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
 });
 
 const EnvDataContainer = (props) => {
-  const [climbEnvData, setClimbEnvData] = useState(null);
+  const [climbingEnvData, setclimbingEnvData] = useState(null);
   const climbSessionId = props.id;
 
   const fetchClimbEnv = async () => {
-    const data = await fetch(`http://192.168.0.29:3000/climbEnv?item_id=${climbSessionId}`);
+    const data = await fetch(`http://192.168.0.29:3000/climbingEnv?item_id=${climbSessionId}`);
     const json = await data.json();
-    setClimbEnvData(json[0]);
+    setclimbingEnvData(json[0]);
   };
 
   useEffect(() => {
@@ -36,19 +36,19 @@ const EnvDataContainer = (props) => {
 
   return (
     <View>
-      {climbEnvData && (
+      {climbingEnvData && (
         <View style={styles.envDataContainer}>
           <View style={styles.envItem}>
             <Entypo name="location" size={30} />
-            <Text style={styles.envText}> {climbEnvData.location} </Text>
+            <Text style={styles.envText}> {climbingEnvData.location} </Text>
           </View>
           <View style={styles.envItem}>
             <FontAwsome5 name="temperature-low" size={30} />
-            <Text style={styles.envText}> {climbEnvData.temperature} </Text>
+            <Text style={styles.envText}> {climbingEnvData.temperature} </Text>
           </View>
           <View style={styles.envItem}>
             <FontAwsome5 name="hand-holding-water" size={30} />
-            <Text style={styles.envText}> {climbEnvData.humidity} </Text>
+            <Text style={styles.envText}> {climbingEnvData.humidity} </Text>
           </View>
           <View style={styles.envItem}>
             <Entypo name="bar-graph" size={30} />

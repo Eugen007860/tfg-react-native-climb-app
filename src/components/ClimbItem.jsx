@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   hour: {
     fontWeight: "bold",
     alignSelf: "center",
-    marginRight: 5
+    marginRight: 5,
   },
 
   navigationButton: {

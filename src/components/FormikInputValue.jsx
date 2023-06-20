@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
 
 const FormikInputValue = ({ name, ...props }) => {
   [fieldProps, fieldMeta, fieldHelpers] = useField(name);
-
   return (
     <>
       <StyledTextInput
