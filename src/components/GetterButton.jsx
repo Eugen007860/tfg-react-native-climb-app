@@ -14,12 +14,12 @@ const GetterButton = (props) => {
   const { setValue } = fieldHelpers;
 
   return (
-    <Pressable
-      style={styles.button}
-      onPress={() => getValueFromDevice({ setValue })}
-    >
-      <Text> Obtener </Text>
-    </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => getValueFromDevice({ setValue })}
+      >
+        <Text style={{color: "#FFF"}}> Obtener </Text>
+      </Pressable>
   );
 };
 

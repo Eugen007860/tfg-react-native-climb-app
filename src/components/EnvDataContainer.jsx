@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Entypo from "react-native-vector-icons/Entypo";
 import FontAwsome5 from "react-native-vector-icons/FontAwesome5";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 
 const styles = StyleSheet.create({
   envDataContainer: {
@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
 
 const EnvDataContainer = (props) => {
   const [climbingEnvData, setclimbingEnvData] = useState(null);
-  const climbSessionId = props.id;
+  const id = props.id;
 
   const fetchClimbEnv = async () => {
-    const data = await fetch(`http://192.168.0.29:3000/climbingEnv?item_id=${climbSessionId}`);
+    const data = await fetch(`http://192.168.0.29:3000/climbingEnv?item_id=${id}`);
     const json = await data.json();
     setclimbingEnvData(json[0]);
   };
 
   useEffect(() => {
     fetchClimbEnv();
-  }, []);
+  }, [props]);
 
 
   return (
@@ -50,11 +50,23 @@ const EnvDataContainer = (props) => {
             <FontAwsome5 name="hand-holding-water" size={30} />
             <Text style={styles.envText}> {climbingEnvData.humidity} </Text>
           </View>
-          <View style={styles.envItem}>
+          {/* <View style={styles.envItem}>
             <Entypo name="bar-graph" size={30} />
             <Text style={styles.envText}> Ver gráfico </Text>
-          </View>
+          </View> */}
         </View>
+      )}
+
+      {!climbingEnvData && (
+         <View>
+         <Pressable
+           onPress={() =>
+             props.navigation.navigate("Registrar datos entorno", { id: id })
+           }
+         >
+           <Text>Registrar datos de entorno</Text>
+         </Pressable>
+       </View>
       )}
     </View>
   );

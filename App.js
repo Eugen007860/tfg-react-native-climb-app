@@ -7,7 +7,9 @@ import LogIn from "./src/pages/LogIn";
 import SignIn from "./src/pages/SignIn";
 import ClimbingDataPage from "./src/pages/ClimbingDataPage";
 import ClimbingItemCreator from "./src/pages/ClimbingItemCreator";
-import ClimbingSessionCreator from "./src/pages/ClimbigSessionCreator";
+import ClimbingSessionForm from "./src/pages/ClimbingSessionForm";
+import ClimbingEnvForm from "./src/pages/ClimbingEnvForm";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -17,8 +19,18 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Log in" component={LogIn} />
         <Stack.Screen name="Sign in" component={SignIn} />
-        <Stack.Screen name="Crear Registro escalada" component={ClimbingItemCreator}/>
-        <Stack.Screen name="Registrar datos escalada" component={ClimbingSessionCreator}/>
+        <Stack.Screen
+          name="Crear Registro escalada"
+          component={ClimbingItemCreator}
+        />
+        <Stack.Screen
+          name="Registrar datos fuerza"
+          component={ClimbingSessionForm}
+        />
+        <Stack.Screen
+          name="Registrar datos entorno"
+          component={ClimbingEnvForm}
+        />
         <Stack.Screen
           name="Climb Session"
           component={ClimbingDataPage}
