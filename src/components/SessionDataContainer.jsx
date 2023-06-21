@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import StrengthItem from "./StrengthItem";
 
 const SessionDataContainer = (props) => {
@@ -16,7 +16,7 @@ const SessionDataContainer = (props) => {
 
   useEffect(() => {
     fetchClimbSession();
-  }, []);
+  }, [props]);
 
   return (
     <View>
@@ -38,13 +38,13 @@ const SessionDataContainer = (props) => {
       )}
       {!climbSessionData && (
         <View>
-          <Text> Todavia no tienes un registro para este dia !</Text>
           <Pressable
+            style = {props.buttonStyle}
             onPress={() =>
               props.navigation.navigate("Registrar datos fuerza", { id: id })
             }
           >
-            <Text>Registrar datos de fuerza</Text>
+            <Text style = {{color: "#FFFF"}}>Registrar datos de fuerza</Text>
           </Pressable>
         </View>
       )}

@@ -20,7 +20,7 @@ const ClimbItem = (props) => {
             })
           }
         >
-          <Text>Ver mas</Text>
+          <Text style = {{color: "#FFFF"}}>Ver mas</Text>
         </Pressable>
         <Text style={[styles.hour]}> {hour}</Text>
       </View>

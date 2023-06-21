@@ -24,7 +24,9 @@ const EnvDataContainer = (props) => {
   const id = props.id;
 
   const fetchClimbEnv = async () => {
-    const data = await fetch(`http://192.168.0.29:3000/climbingEnv?item_id=${id}`);
+    const data = await fetch(
+      `http://192.168.0.29:3000/climbingEnv?item_id=${id}`
+    );
     const json = await data.json();
     setclimbingEnvData(json[0]);
   };
@@ -32,7 +34,6 @@ const EnvDataContainer = (props) => {
   useEffect(() => {
     fetchClimbEnv();
   }, [props]);
-
 
   return (
     <View>
@@ -58,15 +59,16 @@ const EnvDataContainer = (props) => {
       )}
 
       {!climbingEnvData && (
-         <View>
-         <Pressable
-           onPress={() =>
-             props.navigation.navigate("Registrar datos entorno", { id: id })
-           }
-         >
-           <Text>Registrar datos de entorno</Text>
-         </Pressable>
-       </View>
+        <View>
+          <Pressable
+            style={props.buttonStyle}
+            onPress={() =>
+              props.navigation.navigate("Registrar datos entorno", { id: id })
+            }
+          >
+            <Text style = {{color: "#FFFF"}}>Registrar datos de entorno</Text>
+          </Pressable>
+        </View>
       )}
     </View>
   );

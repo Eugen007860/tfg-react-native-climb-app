@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
-import ClimbItem from "../components/ClimbItem";
+import ClimbingItem from "../components/ClimbingItem";
 
 export default function Home({ navigation, route }) {
   const [userLogged, setUserLogged] = useState(true);
@@ -30,7 +30,7 @@ export default function Home({ navigation, route }) {
           <FlatList
             data={climbItemList}
             ItemSeparatorComponent={() => <Text></Text>}
-            renderItem={({ item }) => <ClimbItem {...item} {...navigation} />}
+            renderItem={({ item }) => <ClimbingItem {...item} {...navigation} />}
           />
           <Pressable
             style={styles.creatorButton}
