@@ -10,7 +10,7 @@ import {
 import ClimbingItem from "../components/ClimbingItem";
 
 export default function Home({ navigation, route }) {
-  const [userLogged, setUserLogged] = useState(true);
+  const [userLogged, setUserLogged] = useState(false);
   const [climbItemList, setClimbItemList] = useState(null);
 
   const fetchClimbItems = async () => {
@@ -21,6 +21,8 @@ export default function Home({ navigation, route }) {
 
   useEffect(() => {
     fetchClimbItems();
+    if (route.params && route.params.hasOwnProperty("logged"))
+      setUserLogged(route.params.logged);
   }, [route.params]);
 
   return (
@@ -30,7 +32,9 @@ export default function Home({ navigation, route }) {
           <FlatList
             data={climbItemList}
             ItemSeparatorComponent={() => <Text></Text>}
-            renderItem={({ item }) => <ClimbingItem {...item} {...navigation} />}
+            renderItem={({ item }) => (
+              <ClimbingItem {...item} {...navigation} />
+            )}
           />
           <Pressable
             style={styles.creatorButton}
@@ -42,10 +46,12 @@ export default function Home({ navigation, route }) {
       )}
 
       {!userLogged && (
-        <Button
-          title="You are not looged"
-          onPress={() => navigation.navigate("Log in")}
-        ></Button>
+        <View style={{ alignSelf: "center", width: 200, marginTop: 10}}>
+          <Button
+            title="No has iniciado sesión"
+            onPress={() => navigation.navigate("Log in")}
+          ></Button>
+        </View>
       )}
     </View>
   );

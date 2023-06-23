@@ -1,9 +1,14 @@
 import { useField } from "formik";
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, Text } from "react-native";
+// import { BluetoothSerial } from "react-native-bluetooth-serial";
 
-const getValueFromDevice = ({ setValue }) => {
+
+const getValueFromDevice = async({ setValue }) => {
   //TODO: connect by bluethoot to stregth device and get strength data
+  // console.log( await BluetoothSerial.isEnabled())
+  // console.log(await BluetoothSerial.list())
+  ////////////////////////////////////////////////////////////////////
   setValue("ValorObtenido");
   console.log("Obtengo valor del dispositivo");
 };

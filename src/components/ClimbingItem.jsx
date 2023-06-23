@@ -1,9 +1,22 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import { View, Text, Image, StyleSheet, Pressable, Button } from "react-native";
 
 const ClimbItem = (props) => {
-  const date = props.date.slice(0, 10);
-  const hour = props.date.slice(14, 19);
+
+  const dateTime = new Date(props.date);
+  const formattedDateTime = dateTime.toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+
+  const date = formattedDateTime.slice(0, 10);
+  const hour = formattedDateTime.slice(12, 17);
+
   return (
     <View style={styles.container} key={props.climb_item_id}>
       <Text style={styles.header}> {date} </Text>
@@ -20,10 +33,11 @@ const ClimbItem = (props) => {
             })
           }
         >
-          <Text style = {{color: "#FFFF"}}>Ver mas</Text>
+          <Text style={{ color: "#FFFF" }}>Ver mas</Text>
         </Pressable>
         <Text style={[styles.hour]}> {hour}</Text>
       </View>
+
     </View>
   );
 };

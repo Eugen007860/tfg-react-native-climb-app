@@ -24,7 +24,7 @@ const StyledTextInput = ({ style = {}, error,   ...props}) => {
         error && styles.error
     ]
 
-    return <TextInput style={inputStyle} {...props} />
+    return <TextInput multiline style={inputStyle} {...props} />
 }
 
 
