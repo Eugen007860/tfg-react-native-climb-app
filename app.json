@@ -1,6 +1,16 @@
 {
   "expo": {
     "name": "tfg-frontend",
+    "plugins": [
+      [
+        "with-rn-bluetooth-classic",
+        {
+          "peripheralUsageDescription": "Allow myDevice to check bluetooth peripheral info",
+          "alwaysUsageDescription": "Allow myDevice to always use bluetooth info",
+          "protocols": ["com.myCompany.p1", "com.myCompany.p2"]
+        }
+      ]
+    ],
     "slug": "tfg-frontend",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,20 +21,30 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.tfgfrontend"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT"
+      ],
+      "package": "com.anonymous.tfgfrontend"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e92c2426-aa69-4dbd-876c-addb4aea749e"
+      }
     }
   }
 }
