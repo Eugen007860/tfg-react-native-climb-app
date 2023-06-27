@@ -11,74 +11,22 @@ import {
   PermissionsAndroid,
 } from "react-native";
 
-import RNBluetoothClassic, { BluetoothEventType } from 'react-native-bluetooth-classic';
-
 
 export default function BluetoothHandler() {
-  const [bluetoothEnabled, setBluetoothEnabled] = useState("No disponible");
 
-  const checkBluetooth = async () => {
-    try {
-      const available = await RNBluetoothClassic.isBluetoothEnabled();
-      setBluetoothEnabled("Disponible");
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const requestAccessFineLocationPermission = async () => {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      {
-        title: "Access fine location required for discovery",
-        message:
-          "In order to perform discovery, you must enable/allow " +
-          "fine location access.",
-        buttonNeutral: 'Ask Me Later"',
-        buttonNegative: "Cancel",
-        buttonPositive: "OK",
-      }
-    );
-    return granted === PermissionsAndroid.RESULTS.GRANTED;
-  };
-
-  startDiscovery = async () => {
-    const granted = await requestAccessFineLocationPermission();
-
-    if (!granted) {
-      throw new Error(`Access fine location was not granted`);
-    }
-
-    try {
-      let paired = await RNBluetoothClassic.getBondedDevices();
-      console.log("___________________________PAIRED_______________________________");
-      // console.log(paired);
-      console.log("___________________________UNPAIRED_______________________________");
-      let unpaired = await RNBluetoothClassic.getConnectedDevices();
-      console.log(unpaired)
-      // console.log(await device.connect());
-
-
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
-    RNBluetoothClassic.requestBluetoothEnabled();
-    checkBluetooth();
-    startDiscovery();
+
   }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.statusContainer}>
         <Text>Bluetooth status:</Text>
-        <Text style={styles.statusLabel}>{bluetoothEnabled}</Text>
       </View>
       <Pressable
         style={styles.settingsButton}
-        onPress={() => RNBluetoothClassic.openBluetoothSettings()}
+        onPress={() => console.log("queso")}
       >
         <Text style={{ color: "#FFFF" }}>Bluetooth ajustes</Text>
       </Pressable>

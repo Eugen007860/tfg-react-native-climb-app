@@ -1,16 +1,6 @@
 {
   "expo": {
     "name": "tfg-frontend",
-    "plugins": [
-      [
-        "with-rn-bluetooth-classic",
-        {
-          "peripheralUsageDescription": "Allow myDevice to check bluetooth peripheral info",
-          "alwaysUsageDescription": "Allow myDevice to always use bluetooth info",
-          "protocols": ["com.myCompany.p1", "com.myCompany.p2"]
-        }
-      ]
-    ],
     "slug": "tfg-frontend",
     "version": "1.0.0",
     "orientation": "portrait",
