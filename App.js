@@ -9,15 +9,16 @@ import ClimbingItemCreator from "./src/pages/ClimbingItemCreator";
 import ClimbingSessionForm from "./src/pages/ClimbingSessionForm";
 import ClimbingEnvForm from "./src/pages/ClimbingEnvForm";
 import BluetoothHandler from "./src/pages/BluetoothHandler";
+import { View } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Bluetooth" component={BluetoothHandler} />
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Bluetooth" component={BluetoothHandler} />
         <Stack.Screen name="Log in" component={LogIn} />
         <Stack.Screen name="Sign in" component={SignIn} />
         <Stack.Screen

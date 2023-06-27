@@ -10,7 +10,7 @@ import {
 import ClimbingItem from "../components/ClimbingItem";
 
 export default function Home({ navigation, route }) {
-  const [userLogged, setUserLogged] = useState(true);
+  const [userLogged, setUserLogged] = useState(false);
   const [climbItemList, setClimbItemList] = useState(null);
 
   const fetchClimbItems = async () => {
