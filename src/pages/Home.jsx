@@ -57,6 +57,13 @@ export default function Home({ navigation, route }) {
 
             <Pressable
               style={styles.creatorButton}
+              onPress={() => navigation.navigate("Graficas", {userId : userId})}
+            >
+              <Text style={{ color: "white" }}>Gráficas</Text>
+            </Pressable>
+
+            <Pressable
+              style={styles.creatorButton}
               onPress={() =>
                 navigation.navigate("Crear Registro escalada", {
                   user_id: userId,

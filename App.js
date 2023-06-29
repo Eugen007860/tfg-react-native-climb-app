@@ -10,6 +10,7 @@ import ClimbingSessionForm from "./src/pages/ClimbingSessionForm";
 import ClimbingEnvForm from "./src/pages/ClimbingEnvForm";
 import BluetoothHandler from "./src/pages/BluetoothHandler";
 import { View } from "react-native";
+import Charts from "./src/pages/Charts";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,10 @@ export default function App() {
         <Stack.Screen
           name="Crear Registro escalada"
           component={ClimbingItemCreator}
+        />
+        <Stack.Screen
+          name="Graficas"
+          component={Charts}
         />
         <Stack.Screen
           name="Registrar datos fuerza"
