@@ -6,6 +6,7 @@ import {
   Button,
   StyleSheet,
   Pressable,
+  Dimensions
 } from "react-native";
 import ClimbingItem from "../components/ClimbingItem";
 
@@ -24,15 +25,15 @@ export default function Home({ navigation, route }) {
   };
 
   useEffect(() => {
-    if (route.params && route.params.hasOwnProperty("user_id")){
+    if (route.params && route.params.hasOwnProperty("user_id")) {
       setUserId(route.params.user_id)
     }
-    if (route.params && route.params.hasOwnProperty("logged")){
+    if (route.params && route.params.hasOwnProperty("logged")) {
       setUserLogged(route.params.logged);
     }
   }, [route.params]);
 
-  useEffect ( () => {
+  useEffect(() => {
     fetchClimbItems()
   }, [userId, route.params])
 
@@ -57,7 +58,7 @@ export default function Home({ navigation, route }) {
 
             <Pressable
               style={styles.creatorButton}
-              onPress={() => navigation.navigate("Graficas", {userId : userId})}
+              onPress={() => navigation.navigate("Graficas", { userId: userId })}
             >
               <Text style={{ color: "white" }}>Gráficas</Text>
             </Pressable>
@@ -78,10 +79,9 @@ export default function Home({ navigation, route }) {
 
       {!userLogged && (
         <View style={{ alignSelf: "center", width: 200, marginTop: 10 }}>
-          <Button
-            title="No has iniciado sesión"
-            onPress={() => navigation.navigate("Log in")}
-          ></Button>
+          <Pressable style={styles.logInButton} onPress={() => navigation.navigate("Log in")}>
+            < Text style={{ color: "#FFFFFF", fontWeight: "bold", textAlign: "center" }}> ¿TODAVIA NO HAS INICIADO SESIÓN? </Text>
+          </Pressable>
         </View>
       )}
     </View>
@@ -107,4 +107,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#CCCCCC",
   },
+
+  logInButton: {
+    backgroundColor: "rgb(24, 182, 245)",
+    marginTop: Dimensions.get("screen").height / 3,
+    alignItems: "center",
+    padding: 4,
+    borderRadius: 8,
+  }
 });
