@@ -6,24 +6,27 @@ import { climbingItemValidationSchema } from "../validationSchemas/climbingItem"
 
 export default function ClimbingItemCreator({ navigation, route }) {
   const fullDate = new Date().toISOString().slice(0, 19).replace("T", " ");
-  const [date, hour] = fullDate.split(" ")
+  const [date, hour] = fullDate.split(" ");
+  const user_id = route.params.user_id;
 
   return (
     <View style={styles.container}>
-      <View style = {styles.title}>
-        <Text style={{color: "#FFFF"}}>Date: {date}</Text>
-        <Text style={{color: "#FFFF"}}>Hour: {hour}</Text>
+      <View style={styles.title}>
+        <Text style={{ color: "#FFFF" }}>Date: {date}</Text>
+        <Text style={{ color: "#FFFF" }}>Hour: {hour}</Text>
       </View>
       <Formik
         validationSchema={climbingItemValidationSchema}
         initialValues={initialValues}
-        onSubmit={(values) => saveClimbingItem(values, fullDate, navigation)}
+        onSubmit={(values) =>
+          saveClimbingItem(values, fullDate, navigation, user_id)
+        }
       >
         {({ handleChange, handleSubmit }) => {
           return (
             <View>
               <FormikInputValue
-                style={[styles.formInput, styles.formDescription ]}
+                style={[styles.formInput, styles.formDescription]}
                 name="description"
                 placeholder="Descripcion"
                 onChangeText={handleChange("description")}
@@ -58,15 +61,15 @@ const styles = StyleSheet.create({
 
   formDescription: {
     height: 100,
-    textAlign: "auto"
+    textAlign: "auto",
   },
 
   title: {
-    backgroundColor : "purple",
+    backgroundColor: "purple",
     marginTop: 10,
     padding: 15,
     alignItems: "center",
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   createButton: {
@@ -82,7 +85,7 @@ const initialValues = {
   image: "",
 };
 
-const saveClimbingItem = async (values, date, navigation) => {
+const saveClimbingItem = async (values, date, navigation, user_id) => {
   await fetch("http://192.168.0.29:3000/climbingItem", {
     method: "POST",
     headers: {
@@ -92,6 +95,7 @@ const saveClimbingItem = async (values, date, navigation) => {
       description: values.description,
       image: values.image,
       date: date,
+      user_id: user_id,
     }),
   })
     .then(() => {

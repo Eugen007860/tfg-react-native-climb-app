@@ -50,7 +50,7 @@ export default function LogIn({ navigation }) {
                 onChangeText={handleChange("password")}
                 secureTextEntry
               />
-              <Button onPress={handleSubmit} title="Log In"></Button>
+              <Button onPress={handleSubmit} title="Log In"/>
               <Pressable
                 style={{ marginTop: 10 }}
                 onPress={() => navigation.navigate("Sign in")}
@@ -86,7 +86,7 @@ const getUser = async (values, navigation, setUserError) => {
     }),
   });
   const jsonData = await response.json();
-  if (jsonData.length > 0) navigation.navigate("Home", { logged: true });
+  if (jsonData.length > 0) navigation.navigate("Home", { logged: true, user_id: jsonData[0].user_id });
   else setUserError(true);
 };
 
