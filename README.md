@@ -3,5 +3,4 @@ Native application for mobile devices implemented by react-native with climbing 
 
 Commands:
 - npm install (Install dependencies) 
-- npm run start (To see different devices avaible) 
-  -> npm run android (Require Android Studio installed)
+- npx expo run:android -d: Build and execute application "-d" option to see avaible devices.
